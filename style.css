@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: calc(100vh + 10px);
+  margin: 0;
+  padding: 0 50px;
+  background: radial-gradient(
+    circle,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 230, 45, 1) 100%
+  );
+  background-size: cover;
+}
+
+.main-title {
+  margin: 0;
+  margin-bottom: 32px;
+  padding-top: 36px;
+  font-family: sans-serif;
+  font-size: 40px;
+  color: #1a1a0b;
+  text-align: center;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding-top: 24px;
+}
+
+.form__input {
+  width: 45%;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border-color: #575718;
+  border-width: 2px;
+  background: rgb(238, 237, 174);
+  background: radial-gradient(
+    circle,
+    rgba(238, 237, 174, 1) 0%,
+    rgba(148, 233, 173, 1) 100%
+  );
+  font-size: 24px;
+  color: #1a1a0b;
+}
+
+.form__input:focus-visible {
+  outline: rgb(157, 165, 42) 2px solid;
+}
+
+.form__btn {
+  padding: 20px 32px;
+  border-radius: 8px;
+  border-color: #575718;
+  border-width: 2px;
+  background-color: #bef574;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a0b;
+}
+
+.form__btn:focus-visible {
+  outline: rgb(157, 165, 42) 2px solid;
+}
+
+form.error .form__input {
+  outline: 3px solid red;
+}
+
+.error-message {
+  position: absolute;
+  top: -2px;
+  color: #d11d2c;
+  font-size: 20px;
+}
+
+.proto-list {
+  margin: 0;
+  padding: 20px;
+  width: 50%;
+  font-size: 25px;
+}
+
+.accordion__control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #575718;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.accordion__title {
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.accordion__icon {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #bef574;
+  transition: transform 0.3s ease-in-out;
+}
+
+.accordion__icon::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 1px;
+  top: 50%;
+  left: 50%;
+  background-color: #575718;
+  transform: translate(-50%, -50%);
+}
+
+.accordion__icon::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  background-color: #575718;
+  transform: translate(-50%, -50%);
+}
+
+.accordion__content {
+  box-sizing: content-box;
+  max-height: 0;
+  margin-top: -1px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+  border: 1px solid #575718;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out,
+    opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.open.accordion .accordion__icon {
+  transform: rotate(45deg);
+}
+
+.open.accordion .accordion__content {
+  padding: 15px;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 1025px) {
+  body {
+    padding: 0 30px;
+  }
+
+  .main-title {
+    margin-bottom: 24px;
+    padding-top: 32px;
+    font-size: 36px;
+  }
+
+  .form__input {
+    min-width: 400px;
+    padding: 12px 16px;
+    font-size: 20px;
+  }
+
+  .form__btn {
+    padding: 16px 28px;
+    font-size: 20px;
+  }
+
+  .proto-list {
+    width: 75%;
+    padding: 15px;
+  }
+
+  .error-message {
+    top: 0;
+    font-size: 16px;
+  }
+
+  .accordion__title {
+    font-size: 24px;
+  }
+
+  .accordion__content {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:800px) {
+  body {
+    padding: 20px;
+  }
+
+  .main-title {
+    margin-bottom: 16px;
+    padding-top: 0;
+    font-size: 32px;
+  }
+
+  .form {
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .form__btn {
+    padding: 12px 24px;
+  }
+
+  .proto-list {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 20px;
+  }
+
+  .accordion__title {
+    font-size: 22px;
+  }
+
+  .accordion__content {
+    font-size: 18px;
+  }
+}
+
+@media (max-width:690px) {
+  body {
+    padding: 10px;
+  }
+
+  .main-title {
+    margin-bottom: 12px;
+    font-size: 28px;
+  }
+
+  .form {
+    padding-top: 12px;
+  }
+
+  .form__input {
+    min-width: auto;
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  .form__btn {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  .proto-list {
+    font-size: 16px;
+  }
+
+  .accordion__control {
+    padding: 10px;
+  }
+
+  .accordion__title {
+    font-size: 16px;
+  }
+
+  .accordion__content {
+    margin-bottom: 8px;
+    padding: 4px;
+    font-size: 12px;
+  }
+
+  .accordion__content ol {
+    padding: 0;
+    padding-left: 4px;
+    margin: 0;
+  }
+
+  .accordion__icon {
+    width: 25px;
+    height: 25px;
+  }
+}

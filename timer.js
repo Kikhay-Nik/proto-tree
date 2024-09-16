@@ -1,7 +1,3 @@
-// запустить таймер
-// поставить на паузу
-// сбросить таймер
-
 export default class TimerDisplay {
   constructor(seconds) {
     if (typeof seconds !== 'number' || seconds < 1) {
